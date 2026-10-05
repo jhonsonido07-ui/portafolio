@@ -1,0 +1,266 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: #4b5563;
+  background: #f9fafb;
+  line-height: 1.6;
+}
+
+.saltar-al-contenido {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #4f46e5;
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  z-index: 10;
+}
+
+.saltar-al-contenido:focus {
+  left: 0;
+}
+
+main:focus {
+  outline: none;
+}
+
+.navegacion {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+}
+
+.navegacion__lista {
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  max-width: 900px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.navegacion__item a {
+  display: inline-block;
+  padding: 0.85rem 0;
+  color: #111827;
+  font-weight: 500;
+}
+
+.navegacion__item a:hover {
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
+.presentacion {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.presentacion h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.presentacion__rol {
+  margin: 0.5rem 0 0;
+  color: #4f46e5;
+  font-weight: 500;
+}
+
+.presentacion__descripcion {
+  margin: 1.5rem 0 0;
+  max-width: 60ch;
+}
+
+.tecnologias {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.tecnologias h2 {
+  margin: 0 0 1.5rem;
+  font-size: 1.6rem;
+  color: #111827;
+}
+
+.tecnologias__grupo {
+  margin-bottom: 1.75rem;
+}
+
+.tecnologias__categoria {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+  color: #111827;
+}
+
+.tecnologias__lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.tecnologias__item {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.tecnologias__nombre {
+  font-weight: 600;
+  color: #111827;
+}
+
+.tecnologias__descripcion {
+  font-size: 0.9rem;
+}
+
+.proyectos {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.proyectos h2 {
+  margin: 0 0 1.5rem;
+  font-size: 1.6rem;
+  color: #111827;
+}
+
+.proyectos__lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.proyectos__tarjeta {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.proyectos__nombre {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+  color: #111827;
+}
+
+.proyectos__descripcion {
+  margin: 0 0 1rem;
+  max-width: 65ch;
+}
+
+.proyectos__tecnologias {
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.proyectos__etiqueta {
+  background: #eef2ff;
+  color: #4f46e5;
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.85rem;
+}
+
+.proyectos__enlace {
+  font-weight: 600;
+}
+
+.contacto {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.contacto h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.6rem;
+  color: #111827;
+}
+
+.contacto__invitacion {
+  margin: 0 0 1.25rem;
+  max-width: 60ch;
+}
+
+.contacto__lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+@media (max-width: 600px) {
+  .presentacion {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .presentacion h1 {
+    font-size: 1.8rem;
+  }
+
+  .tecnologias,
+  .proyectos,
+  .contacto {
+    padding: 2.25rem 1.25rem;
+  }
+
+  .contacto {
+    padding-bottom: 3rem;
+  }
+
+  .tecnologias h2,
+  .proyectos h2,
+  .contacto h2 {
+    font-size: 1.35rem;
+  }
+
+  .tecnologias__lista {
+    grid-template-columns: 1fr;
+  }
+
+  .navegacion__lista {
+    gap: 1rem;
+  }
+
+  .navegacion__item a {
+    padding: 0.7rem 0;
+    font-size: 0.95rem;
+  }
+
+  .proyectos__tarjeta {
+    padding: 1.25rem;
+  }
+}
