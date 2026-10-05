@@ -21,6 +21,7 @@ export const perfil = {
     'Me interesa aprender sobre la configuración de la IA, depurar bases de datos y entrenarlas.',
   correo: 'jhon.sonido07@gmail.com',
   github: 'https://github.com/jhonsonido07-ui',
+  sitio: 'https://portafolio-two-kappa-99.vercel.app/',
   invitacion:
     '¿Tienes un proyecto en mente o quieres hablar sobre IA? Escríbeme y con gusto lo conversamos.',
   anio: new Date().getFullYear(),

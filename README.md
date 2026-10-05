@@ -37,13 +37,16 @@ npm run preview # sirve la versión compilada de dist/
 ```
 src/
 ├── App.tsx               # compone la interfaz y pasa los datos por props
+├── FondoIA.tsx           # fondo animado (rejilla, luces, nodos, código)
 ├── Navegacion.tsx        # menú de enlaces hacia las secciones
 ├── Presentacion.tsx      # nombre, rol y descripción
 ├── ListaTecnologias.tsx  # agrupa y muestra las tecnologías por categoría
 ├── ListaProyectos.tsx   # itera los proyectos
 ├── TarjetaProyecto.tsx   # una tarjeta por proyecto
-├── Contacto.tsx          # correo y perfil de GitHub
+├── Contacto.tsx          # correo, GitHub y enlace al sitio publicado
 ├── data.ts               # arreglos de datos y tipos
+├── useRevelado.ts        # hook que anima las secciones al hacer scroll
+├── useFondoIA.ts         # hook que sigue la posición del cursor
 ├── index.css             # estilos de toda la página
 └── main.tsx              # punto de entrada
 ```
@@ -54,12 +57,20 @@ Cada componente tiene una responsabilidad clara y recibe por `props` los datos q
 
 | Componente | Responsabilidad | Props que recibe |
 | --- | --- | --- |
+| `FondoIA` | Fondo animado: rejilla, luces de color, nodos y líneas de código | — |
 | `Navegacion` | Lista de enlaces para saltar a cada sección | — |
 | `Presentacion` | Muestra el nombre, el rol y la descripción | `nombre`, `rol`, `descripcion` |
 | `ListaTecnologias` | Recorre las categorías y muestra las tecnologías de cada una | `categorias`, `tecnologias` |
 | `ListaProyectos` | Recorre el arreglo de proyectos | `proyectos` |
 | `TarjetaProyecto` | Dibuja un solo proyecto (nombre, descripción, tecnologías y enlace) | `proyecto` |
-| `Contacto` | Enlace de correo (`mailto:`) y enlace a GitHub | — |
+| `Contacto` | Enlace de correo (`mailto:`), GitHub y el sitio publicado | — |
+
+### Hooks propios
+
+| Hook | Para qué sirve |
+| --- | --- |
+| `useRevelado` | Usa `IntersectionObserver` para saber cuándo una sección entra en pantalla, y así animarla. Si el navegador no lo soporta, el contenido se muestra igual. |
+| `useFondoIA` | Escucha el movimiento del cursor y guarda la posición en variables CSS, para que el halo del fondo la siga. |
 
 ### Cómo funcionan las listas
 
@@ -83,7 +94,7 @@ El `key` en cada elemento existe para que React identifique cuál cambió y solo
 
 Todo el contenido editable está en `src/data.ts`:
 
-- `perfil`: nombre, rol, descripción, correo, GitHub y texto de invitación.
+- `perfil`: nombre, rol, descripción, correo, GitHub, sitio publicado y texto de invitación.
 - `categorias`: los grupos en los que se reparten las tecnologías.
 - `tecnologias`: arreglo de objetos `{ id, nombre, categoria, descripcion }`.
 - `proyectos`: arreglo de objetos `{ id, nombre, descripcion, tecnologias, enlace, enlaceTexto }`.
@@ -100,10 +111,21 @@ Para agregar un proyecto basta con añadir un objeto al arreglo.
 
 Los estilos están en `src/index.css`, sin framework. Los componentes usan clases con el patrón `bloque__elemento`.
 
+El tema es oscuro, con colores de terminal: fondo casi negro, acentos en verde cian, violeta y magenta, y tipografía monoespaciada en títulos y etiquetas.
+
 El diseño se adapta a distintos tamaños de pantalla:
 
-- Bajo 600px el título principal se reduce, los márgenes bajan y la lista de tecnologías pasa a una sola columna.
+- Bajo 640px el título principal se reduce, los márgenes bajan y la lista de tecnologías pasa a una sola columna.
 - Las listas usan `grid` con `minmax()`, así que se reacomodan solas al ancho disponible.
+- En pantallas menores a 640px las líneas de código del fondo se ocultan para no cargar el texto.
+
+## Interacción y animaciones
+
+- **Fondo animado**: rejilla que se desplaza, tres luces de color que flotan, nodos que parpadean y un halo que sigue al cursor.
+- **Al pasar el mouse**: las tarjetas se levantan, cambian de color y brillan; las etiquetas suben ligeramente.
+- **Al hacer scroll**: cada sección entra desde abajo. Lo controla `IntersectionObserver` a través del hook `useRevelado`.
+
+Si el sistema operativo está configurado con "reducir movimiento", todas las animaciones se desactivan y el contenido se muestra de inmediato.
 
 ## Publicación
 
@@ -114,3 +136,10 @@ npm run build
 ```
 
 Después se sube la carpeta `dist/` al servicio de hosting elegido.
+
+## Sitio publicado
+
+- **Portafolio**: https://portafolio-two-kappa-99.vercel.app/
+- **Código**: https://github.com/jhonsonido07-ui/portafolio
+
+El sitio está en Vercel y el repositorio es público. Vercel compila con `npm run build` y publica la carpeta `dist/`. Cada vez que se sube un commit a la rama `main`, Vercel vuelve a desplegar el sitio automáticamente.

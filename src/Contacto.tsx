@@ -23,6 +23,16 @@ function Contacto() {
             GitHub
           </a>
         </li>
+        <li>
+          <a
+            className="contacto__boton"
+            href={perfil.sitio}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Ver este portafolio
+          </a>
+        </li>
       </ul>
       <p className="contacto__copy">
         © {perfil.anio} {perfil.nombre}
