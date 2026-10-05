@@ -23,6 +23,7 @@ export const perfil = {
   github: 'https://github.com/jhonsonido07-ui',
   invitacion:
     '¿Tienes un proyecto en mente o quieres hablar sobre IA? Escríbeme y con gusto lo conversamos.',
+  anio: new Date().getFullYear(),
 }
 
 export const categorias = [

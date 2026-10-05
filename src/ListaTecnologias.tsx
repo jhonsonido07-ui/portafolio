@@ -1,3 +1,4 @@
+import { useRevelado } from './useRevelado'
 import type { Tecnologia } from './data'
 
 type ListaTecnologiasProps = {
@@ -5,13 +6,19 @@ type ListaTecnologiasProps = {
   tecnologias: Tecnologia[]
 }
 
-function ListaTecnologias({
-  categorias,
-  tecnologias,
-}: ListaTecnologiasProps) {
+function ListaTecnologias({ categorias, tecnologias }: ListaTecnologiasProps) {
+  const { ref, visible } = useRevelado<HTMLElement>()
+
   return (
-    <section id="tecnologias" className="tecnologias">
-      <h2>Tecnologías</h2>
+    <section
+      ref={ref}
+      id="tecnologias"
+      className="seccion tecnologias reveal"
+      data-visible={visible}
+    >
+      <h2 className="seccion__titulo">
+        <span className="seccion__prompt">&gt;</span> Tecnologías
+      </h2>
       {categorias.map((categoria) => (
         <div key={categoria} className="tecnologias__grupo">
           <h3 className="tecnologias__categoria">{categoria}</h3>

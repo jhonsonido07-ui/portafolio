@@ -1,4 +1,5 @@
 import { categorias, perfil, proyectos, tecnologias } from './data'
+import FondoIA from './FondoIA'
 import Navegacion from './Navegacion'
 import Presentacion from './Presentacion'
 import ListaTecnologias from './ListaTecnologias'
@@ -8,6 +9,7 @@ import Contacto from './Contacto'
 function App() {
   return (
     <>
+      <FondoIA />
       <a className="saltar-al-contenido" href="#contenido">
         Saltar al contenido
       </a>
